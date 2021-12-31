@@ -1,0 +1,26 @@
+CREATE TABLE  Customer(
+customer_id int NOT NULL,
+customer_name varchar(100),
+customer_tel varchar(100),
+PRIMARY KEY (customer_id));
+);
+CREATE TABLE  Product (
+product_id int NOT NULL,
+product_name varchar(100),
+price int,
+RIMARY KEY (product_id));
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id),
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
+ALTER TABLE Product
+ADD COLUMN Category VARCHAR(20) AFTER price;
+
+ALTER TABLE Orders
+ADD COLUMN OrderDate DATE DEFAULT "SYSDATE";
+
+
